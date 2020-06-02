@@ -231,8 +231,8 @@ Parameters:
       lsf10.1_linux2.6-glibc2.3-x86_64.tar.Z. This must be a full distribution and not a patch 
       or Fix Pack package. Select object in the S3 console and choose Copy Path and paste here.
     Type: String
-    Default: s3://<your_bucket>/lsf10.1_linux2.6-glibc2.3-x86_64.tar.Z
-    AllowedPattern: s3\:\/\/.*\/lsf10.1_linux2.6-glibc2.3-x86_64.tar.Z
+    ##Default: s3://<your_bucket>/lsf10.1_linux2.6-glibc2.3-x86_64.tar.Z
+    AllowedPattern: s3\:\/\/.*\/lsf10.1_l.*-x86_64.tar.Z
     ConstraintDescription: S3 path invalid. Please verify LSF package name matches
       the example in the parameter description.
 
@@ -281,7 +281,7 @@ Resources:
         PrivateSubnet1CIDR: !Ref PrivateSubnet1CIDR
         LSFClusterName: !Ref LSFClusterName
         SshSource: !Ref SshSource
-      TemplateURL: https://s3.amazonaws.com/aws-eda-workshop-files/workshops/eda-workshop-lsf/templates/01-network.yaml
+      TemplateURL: https://github.com/xinlaoda/aws-eda-workshops/blob/master/workshops/eda-workshop-lsf/templates/01-network.yaml
 
   LSFServiceStack:
     Type: AWS::CloudFormation::Stack
@@ -302,7 +302,7 @@ Resources:
         CustomerLSFEntitlementUri: !Ref CustomerLSFEntitlementUri
         AdminKeyPair: !Ref AdminKeyPair
         DCVUserName: !Ref UserName
-      TemplateURL: https://s3.amazonaws.com/aws-eda-workshop-files/workshops/eda-workshop-lsf/templates/02-lsf-master.yaml
+      TemplateURL: https://github.com/xinlaoda/aws-eda-workshops/blob/master/workshops/eda-workshop-lsf/templates/02-lsf-master.yaml
 
   NFSServerStack:
     Type: AWS::CloudFormation::Stack
@@ -312,7 +312,7 @@ Resources:
         LSFClusterName: !Ref LSFClusterName
         AdminKeyPair: !Ref AdminKeyPair
         SshSource: !Ref SshSource
-      TemplateURL: https://s3.amazonaws.com/aws-eda-workshop-files/workshops/eda-workshop-lsf/templates/04-nfs_server_instanceStore_zfs.yaml
+      TemplateURL:https://github.com/xinlaoda/aws-eda-workshops/blob/master/workshops/eda-workshop-lsf/templates/04-nfs_server_instanceStore_zfs.yaml
 
   LoginServerStack:
     Type: AWS::CloudFormation::Stack
@@ -329,7 +329,7 @@ Resources:
         ProjectDir: !Ref ProjectDir
         UserName: !Ref UserName
         UserPass: !Ref UserPass
-      TemplateURL: https://s3.amazonaws.com/aws-eda-workshop-files/workshops/eda-workshop-lsf/templates/03-login-server-dcv.yaml
+      TemplateURL: https://github.com/xinlaoda/aws-eda-workshops/blob/master/workshops/eda-workshop-lsf/templates/03-login-server-dcv.yaml
 
 Outputs:
   RootStackName:
